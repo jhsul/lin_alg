@@ -11,7 +11,7 @@ typedef struct
 
 int width(t_mtrx *A);
 
-t_mtrx init_mtrx(int rows, int cols);
+t_mtrx *init_mtrx(int rows, int cols);
 void del_mtrx(t_mtrx *A);
 void print_mtrx(t_mtrx *A);
 

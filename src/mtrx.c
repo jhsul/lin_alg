@@ -21,25 +21,24 @@ int width(t_mtrx *A)
 	return i+4; // +1 for extra step, +3 for decimal places
 }
 
-t_mtrx init_mtrx(int rows, int cols)
+t_mtrx *init_mtrx(int rows, int cols)
 {
-	t_mtrx A;
-	A.m_rows = rows;
-	A.m_cols = cols;
-	A.arr = malloc(rows * sizeof(*A.arr));
-	A.data = malloc(rows * cols * sizeof(*A.data));
+	t_mtrx *A = malloc(sizeof(t_mtrx));
+	A -> m_rows = rows;
+	A -> m_cols = cols;
+	A -> arr = malloc(rows * sizeof(*A -> arr));
+	A -> data = malloc(rows * cols * sizeof(*A -> data));
 	
-	double *tmp = A.data;
-	
-	for(int i = 0; i < rows; i++, tmp += cols)
-		A.arr[i] = tmp;
+	for(int i = 0; i < rows; i++)
+        A -> arr[i] = A -> data + (i * cols);
 	
 	return A;
 }
 void del_mtrx(t_mtrx *A)
 {
-	
-	free(A -> arr);
+	free(A->data);
+    free(A->arr);
+    free(A);
 }
 
 void print_mtrx(t_mtrx *A)

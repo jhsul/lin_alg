@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "include/rref.h"
 
 
@@ -15,16 +16,16 @@ int main()
 		   rb[] = {2, 0, -99},
 		   rc[] = {14, 134, 130};
 		   
-	t_mtrx A = init_mtrx(rows, cols);
+	t_mtrx *A = init_mtrx(rows, cols);
 	
-	A.arr[0] = ra;
-	A.arr[1] = rb;
-	A.arr[2] = rc;
+	memcpy(A -> arr[0], ra, sizeof(ra));
+    memcpy(A -> arr[1], rb, sizeof(rb));
+    memcpy(A -> arr[2], rc, sizeof(rc));
 	
-	print_mtrx(&A);
+	print_mtrx(A);
 	
 	
-	del_mtrx(&A);
+	del_mtrx(A);
 	
 	/*
 	double **mtrx = malloc(rows * sizeof *mtrx);
