@@ -53,18 +53,18 @@ There is a function to make it easier to copy another matrix.
 Example **incorrect** copy:
 
 ```C
-mtrx_A;
+mtrx_t A;
 init_mtrx(&A);
 //...
-mtrx_B = A;
+mtrx_t B = A;
 ```
 Since the data is stored in pointers, the elements will be stored in the same memory. There would be no practical reason to do this.
 
 Example **correct** copy:
 
 ```C
-mtrx_A;
-mtrx_B;
+mtrx_t A;
+mtrx_t B;
 init_mtrx(&A);
 init_mtrx(&B);
 //...
