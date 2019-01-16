@@ -3,7 +3,7 @@
 
 #include "../include/mtrx.h"
 
-int width(t_mtrx *A)
+int width(mtrx_t *A)
 {
 	double x = A -> arr [0][0];
 	for(int r = 0; r < A -> m_rows; r++)
@@ -21,27 +21,42 @@ int width(t_mtrx *A)
 	return i+4; // +1 for extra step, +3 for decimal places
 }
 
-t_mtrx *init_mtrx(int rows, int cols)
+mtrx_t *init_mtrx(mtrx_t *A, int rows, int cols)
 {
-	t_mtrx *A = malloc(sizeof(t_mtrx));
 	A -> m_rows = rows;
 	A -> m_cols = cols;
-	A -> arr = malloc(rows * sizeof(*A -> arr));
-	A -> data = malloc(rows * cols * sizeof(*A -> data));
+	A -> arr = calloc(rows, sizeof(A -> arr));
+	A -> data = calloc(rows * cols, sizeof(A -> data));
 	
 	for(int i = 0; i < rows; i++)
         A -> arr[i] = A -> data + (i * cols);
 	
 	return A;
 }
-void del_mtrx(t_mtrx *A)
+
+/*
+A: Source
+B: Destination
+*/
+mtrx_t *cpy_mtrx(mtrx_t *A, mtrx_t *B)
+{
+	for(int r = 0; r < A -> m_rows; r++)
+	{
+		for(int c = 0; c < A -> m_cols; c++)
+		{
+			B -> arr[r][c] = A -> arr[r][c];
+		}
+	}
+	return B;
+}
+
+void del_mtrx(mtrx_t *A)
 {
 	free(A->data);
     free(A->arr);
-    free(A);
 }
 
-void print_mtrx(t_mtrx *A)
+void print_mtrx(mtrx_t *A)
 {
 	int w = width(A);
 	int p = 2;

@@ -3,8 +3,8 @@
 
 #include "mtrx.h"
 
-void e_switch(int a, int b, t_mtrx *A);
-void e_scale(int a, double c, t_mtrx *A);
-void e_add(int a, double c, int b, t_mtrx *A);
+void e_switch(int a, int b, mtrx_t *A);
+void e_scale(int a, double c, mtrx_t *A);
+void e_add(int a, double c, int b, mtrx_t *A);
 
 #endif

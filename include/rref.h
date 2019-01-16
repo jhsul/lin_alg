@@ -4,6 +4,6 @@
 #include "ero.h"
 #include "mtrx.h"
 
-void rref(double **dest, double **mtrx, int rows, int cols);
+mtrx_t *rref(mtrx_t *A);
 
 #endif

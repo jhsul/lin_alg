@@ -9,33 +9,34 @@ int main()
 	int rows = 3;
 	int cols = 3;
 	
-	
-	//double **mtrx = test_init(rows, cols);
 		
 	double ra[] = {1, 3223, 5},
 		   rb[] = {2, 0, -99},
 		   rc[] = {14, 134, 130};
 		   
-	t_mtrx *A = init_mtrx(rows, cols);
+	mtrx_t A;
+	mtrx_t B;
 	
-	memcpy(A -> arr[0], ra, sizeof(ra));
-    memcpy(A -> arr[1], rb, sizeof(rb));
-    memcpy(A -> arr[2], rc, sizeof(rc));
+	init_mtrx(&A, 3, 3);
+	init_mtrx(&B, 3, 3);	
 	
-	print_mtrx(A);
+	memcpy(A.arr[0], ra, sizeof(ra));
+    memcpy(A.arr[1], rb, sizeof(rb));
+    memcpy(A.arr[2], rc, sizeof(rc));
+	
+	print_mtrx(&A);
+	
+	cpy_mtrx(&A, &B);
+	
+	print_mtrx(&B);
+	
+	A.arr[0][1] = 10.0;
+	
+	print_mtrx(&A);
+	print_mtrx(&B);
 	
 	
-	del_mtrx(A);
+	del_mtrx(&A);
+	del_mtrx(&B);
 	
-	/*
-	double **mtrx = malloc(rows * sizeof *mtrx);
-	double *data = malloc(rows * cols * sizeof *data);
-
-	for (int i = 0; i < rows; i++, data += cols)
-  	mtrx[i] = data;
-  	
-  	free(*mtrx);
-	free(mtrx);
-
-	*/
 }

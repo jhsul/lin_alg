@@ -3,10 +3,8 @@
 
 #include "../include/rref.h"
 
-void rref(double **dest, double **mtrx, int rows, int cols)
+mtrx_t *rref(mtrx_t *A)
 {
-	for(int i = 0; i < rows; i++)
-	{
 	
-	}
+	return A;
 }

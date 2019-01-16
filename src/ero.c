@@ -7,7 +7,7 @@
 /*
 Swap the rows mtrx[a] and mtrx[b]
 */
-void e_switch(int a, int b, t_mtrx *A)
+void e_switch(int a, int b, mtrx_t *A)
 {
 	double *tmp = malloc(A -> m_cols * sizeof(**A -> arr));
 	
@@ -22,7 +22,7 @@ void e_switch(int a, int b, t_mtrx *A)
 /*
 Scale every element in mtrx[a] by c
 */
-void e_scale(int a, double c, t_mtrx *A)
+void e_scale(int a, double c, mtrx_t *A)
 {
 	for(int i = 0; i < A -> m_cols; i++)
 		A -> arr[a][i] *= c;
@@ -31,7 +31,7 @@ void e_scale(int a, double c, t_mtrx *A)
 /*
 Add c*mtrx[a] to mtrx[b]
 */
-void e_add(int a, double c, int b, t_mtrx *A)
+void e_add(int a, double c, int b, mtrx_t *A)
 {
 	for(int i = 0; i < A -> m_cols; i++)
 		A -> arr[b][i] += c * A -> arr[a][i];
