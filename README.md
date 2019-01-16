@@ -48,7 +48,11 @@ del_mtrx(&A);
 
 ### Copying
 
-There is a function to make it easier to copy another matrix.
+There is a function to make it easier to copy another matrix. `A` is the source, `B` is the destination.
+
+```C
+mtrx_t *cpy_mtrx(mtrx_t *A, mtrx_t *B);
+```
 
 Example **incorrect** copy:
 
