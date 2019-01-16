@@ -3,6 +3,10 @@ This is an ongoing implementation of various linear algebra tools in C.
 
 ## The `mtrx_t` Type
 
+### Usage
+
+To make memory management easier, none of the operations make a new matrix. As such, **all operations change matrixes in place.** The exception
+
 ### Structure Definition
 
 ```C
