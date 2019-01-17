@@ -35,6 +35,12 @@ int main()
 	print_mtrx(&A);
 	print_mtrx(&B);
 	
+	double x = A.get[1][2]; // In row-major order
+
+	double *y = A.get[2];   // Pointer to the second row
+	double z = y[2];        // z == x
+	
+	printf("x=%f\nz=%f\n", x, z);
 	
 	del_mtrx(&A);
 	del_mtrx(&B);

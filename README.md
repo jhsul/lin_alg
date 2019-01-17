@@ -32,6 +32,19 @@ A    = [[a, b, c],
 data = [a, b, c, d, e, f, g, h, i]
 get  = [&a, &d, &g]
 ``` 
+### Accessing Elements
+
+Treat the `get` element as a 2D array. You shouldn't ever have to use `data`.
+
+For example:
+
+```C
+double x = A.get[2][3]; // In row-major order
+
+double *y = A.get[2];   // Pointer to the second row
+double z = y[3];        // z == x
+```
+
 ### Construction / Destruction
 
 There is a basic constructor and destructor. Treat them like `malloc` and `free`:
