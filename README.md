@@ -45,7 +45,7 @@ Example usage:
 
 ```C
 mtrx_t A;
-init_mtrx(&A, 3, 4,);
+init_mtrx(&A, 3, 4);
 //...
 del_mtrx(&A);
 ```
@@ -62,7 +62,7 @@ Example **incorrect** copy:
 
 ```C
 mtrx_t A;
-init_mtrx(&A);
+init_mtrx(&A, 3, 3);
 //...
 mtrx_t B = A;
 ```
@@ -73,8 +73,8 @@ Example **correct** copy:
 ```C
 mtrx_t A;
 mtrx_t B;
-init_mtrx(&A);
-init_mtrx(&B);
+init_mtrx(&A, 3, 3);
+init_mtrx(&B, 3, 3);
 //...
 cpy_mtrx(&A, &B);
 ```
@@ -90,19 +90,26 @@ void print_mtrx(mtrx_t *A);
 
 ## Elementary Row Operations
 
-`void e_switch(int a, int b, t_mtrx *A);`
+### Type I: Switch
+
+```C
+void e_switch(int a, int b, mtrx_t *A);
+```
 
 Switch rows `a` and `b` of matrix `A`
 
----
-`void e_scale(int a, double c, t_mtrx *A);`
+### Type II: Scale
+
+```C
+void e_scale(int a, double c, mtrx_t *A);
+```
 
 Scale row `a` of matrix `A` by `c`
 
----
+### Type III: Add (with Scaling)
 
-`void e_add(int a, double c, int b, t_mtrx *A);`
+```C
+void e_add(int a, double c, int b, mtrx_t *A);
+```
 
-Add `c * mtrx[a]` to `mtrx[b]`
-
----
+Scale row `a` of matrix `A` by `c` and add it to row `b`
