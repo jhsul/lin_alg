@@ -14,13 +14,13 @@ typedef struct
 {
 	int m_rows;
 	int m_cols;
-	double **arr;
+	double **get;
 	double *data;
 } mtrx_t;
 ```
 
 - `data` points to an array holding the entire contents of the matrix.
-- `arr` points to an array of the addresses of the first elements of each row.
+- `get` points to an array of the addresses of the first elements of each row.
 
 For example:
 
@@ -30,7 +30,7 @@ A    = [[a, b, c],
        [g, h, i]]
      
 data = [a, b, c, d, e, f, g, h, i]
-arr  = [&a, &d, &g]
+get  = [&a, &d, &g]
 ``` 
 ### Construction / Destruction
 

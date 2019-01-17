@@ -5,7 +5,7 @@ typedef struct
 {
 	int m_rows;
 	int m_cols;
-	double **arr;
+	double **get;
 	double *data;
 } mtrx_t;
 

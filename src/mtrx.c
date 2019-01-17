@@ -5,13 +5,13 @@
 
 int width(mtrx_t *A)
 {
-	double x = A -> arr [0][0];
+	double x = A -> get [0][0];
 	for(int r = 0; r < A -> m_rows; r++)
 	{
 		for(int c = 0; c < A -> m_cols; c++)
 		{
-			if ((A -> arr[r][c] < 0 ? (-10) * A -> arr[r][c] : A -> arr[r][c]) > x)
-				x = A -> arr[r][c] < 0 ? (-10)*A -> arr[r][c] : A -> arr[r][c];
+			if ((A -> get[r][c] < 0 ? (-10) * A -> get[r][c] : A -> get[r][c]) > x)
+				x = A -> get[r][c] < 0 ? (-10)*A -> get[r][c] : A -> get[r][c];
 		}
 	}
 	int i = 0;
@@ -25,11 +25,11 @@ mtrx_t *init_mtrx(mtrx_t *A, int rows, int cols)
 {
 	A -> m_rows = rows;
 	A -> m_cols = cols;
-	A -> arr = calloc(rows, sizeof(A -> arr));
+	A -> get = calloc(rows, sizeof(A -> get));
 	A -> data = calloc(rows * cols, sizeof(A -> data));
 	
 	for(int i = 0; i < rows; i++)
-        A -> arr[i] = A -> data + (i * cols);
+        A -> get[i] = A -> data + (i * cols);
 	
 	return A;
 }
@@ -44,7 +44,7 @@ mtrx_t *cpy_mtrx(mtrx_t *A, mtrx_t *B)
 	{
 		for(int c = 0; c < A -> m_cols; c++)
 		{
-			B -> arr[r][c] = A -> arr[r][c];
+			B -> get[r][c] = A -> get[r][c];
 		}
 	}
 	return B;
@@ -53,7 +53,7 @@ mtrx_t *cpy_mtrx(mtrx_t *A, mtrx_t *B)
 void del_mtrx(mtrx_t *A)
 {
 	free(A->data);
-    free(A->arr);
+    free(A->get);
 }
 
 void print_mtrx(mtrx_t *A)
@@ -68,23 +68,23 @@ void print_mtrx(mtrx_t *A)
 		{
 			/* top left */
 			if(!r && !c)
-				printf("[[%*.*f, ", w, p, A -> arr[r][c]);
+				printf("[[%*.*f, ", w, p, A -> get[r][c]);
 			
 			/* bottom right */
 			else if(r == A -> m_rows - 1 && c == A -> m_cols - 1)
-				printf("%*.*f]] %i x %i\n", w, p,  A -> arr[r][c], A -> m_rows, A -> m_cols);
+				printf("%*.*f]] %i x %i\n", w, p,  A -> get[r][c], A -> m_rows, A -> m_cols);
 				
 			/* left side */
 			else if(!c)
-				printf(" [%*.*f, ", w, p, A -> arr[r][c]);
+				printf(" [%*.*f, ", w, p, A -> get[r][c]);
 			
 			/* right side */
 			else if(c == A -> m_cols - 1)
-				printf("%*.*f],", w, p, A -> arr[r][c]);
+				printf("%*.*f],", w, p, A -> get[r][c]);
 			
 			/* middle elements */
 			else
-				printf("%*.*f, ", w, p, A -> arr[r][c]);
+				printf("%*.*f, ", w, p, A -> get[r][c]);
 				
 		}
 		if(r != A -> m_rows-1)

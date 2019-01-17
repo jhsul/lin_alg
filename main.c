@@ -20,9 +20,9 @@ int main()
 	init_mtrx(&A, 3, 3);
 	init_mtrx(&B, 3, 3);	
 	
-	memcpy(A.arr[0], ra, sizeof(ra));
-    memcpy(A.arr[1], rb, sizeof(rb));
-    memcpy(A.arr[2], rc, sizeof(rc));
+	memcpy(A.get[0], ra, sizeof(ra));
+    memcpy(A.get[1], rb, sizeof(rb));
+    memcpy(A.get[2], rc, sizeof(rc));
 	
 	print_mtrx(&A);
 	
@@ -30,7 +30,7 @@ int main()
 	
 	print_mtrx(&B);
 	
-	A.arr[0][1] = 10.0;
+	A.get[0][1] = 10.0;
 	
 	print_mtrx(&A);
 	print_mtrx(&B);
