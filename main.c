@@ -32,16 +32,9 @@ int main()
     memcpy(B.get[1], re, sizeof(re));
     memcpy(B.get[2], rf, sizeof(rf));
     
-    cpy_mtrx(A, B);
-	
-	print_mtrx(A);
-	print_mtrx(B);
-	
-	m_add(&A, &B, &C);
-	print_mtrx(C);
-	e_switch(0,1,C);
-	
-	print_mtrx(C);
+    print_mtrx(B);
+   	trans_mtrx(B);
+   	print_mtrx(B);
 	
 	del_mtrx(&A);
 	del_mtrx(&B);

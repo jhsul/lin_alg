@@ -22,17 +22,17 @@ void e_switch(int a, int b, mtrx_t A)
 /*
 Scale every element in mtrx[a] by c
 */
-void e_scale(int a, double c, mtrx_t *A)
+void e_scale(int a, double c, mtrx_t A)
 {
-	for(int i = 0; i < A -> m_cols; i++)
-		A -> get[a][i] *= c;
+	for(int i = 0; i < A.m_cols; i++)
+		A.get[a][i] *= c;
 }
 
 /*
 Add c*mtrx[a] to mtrx[b]
 */
-void e_add(int a, double c, int b, mtrx_t *A)
+void e_add(int a, double c, int b, mtrx_t A)
 {
-	for(int i = 0; i < A -> m_cols; i++)
-		A -> get[b][i] += c * A -> get[a][i];
+	for(int i = 0; i < A.m_cols; i++)
+		A.get[b][i] += c * A.get[a][i];
 }
