@@ -4,6 +4,7 @@
 #include "ero.h"
 #include "mtrx.h"
 
+mtrx_t *ref(mtrx_t *A);
 mtrx_t *rref(mtrx_t *A);
 
 #endif

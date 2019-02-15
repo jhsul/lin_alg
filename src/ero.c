@@ -7,14 +7,14 @@
 /*
 Swap the rows mtrx[a] and mtrx[b]
 */
-void e_switch(int a, int b, mtrx_t *A)
+void e_switch(int a, int b, mtrx_t A)
 {
-	double *tmp = malloc(A -> m_cols * sizeof(**A -> get));
+	double *tmp = malloc(A.m_cols * sizeof(**A.get));
 	
-	memcpy(tmp, A -> get[a], A -> m_cols * sizeof(**A -> get));
+	memcpy(tmp, A.get[a], A.m_cols * sizeof(**A.get));
 	
-	memcpy(A -> get[a], A -> get[b], A -> m_cols * sizeof(**A -> get));
-	memcpy(A -> get[b], tmp, A -> m_cols * sizeof(** A -> get));
+	memcpy(A.get[a], A.get[b], A.m_cols * sizeof(**A.get));
+	memcpy(A.get[b], tmp, A.m_cols * sizeof(** A.get));
 	
 	free(tmp);
 }
