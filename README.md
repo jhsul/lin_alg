@@ -68,7 +68,7 @@ del_mtrx(&A);
 There is a function to make it easier to copy another matrix. `A` is the source, `B` is the destination.
 
 ```C
-mtrx_t *cpy_mtrx(mtrx_t *A, mtrx_t *B);
+mtrx_t cpy_mtrx(mtrx_t A, mtrx_t B);
 ```
 
 Example **incorrect** copy:
@@ -89,7 +89,7 @@ mtrx_t B;
 init_mtrx(&A, 3, 3);
 init_mtrx(&B, 3, 3);
 //...
-cpy_mtrx(&A, &B);
+cpy_mtrx(A, B);
 ```
 
 ### Printing
@@ -97,7 +97,7 @@ cpy_mtrx(&A, &B);
 This function makes it easier to print out a whole matrix. It (tries) to make the spacing as tight as possible while keeping all the columns lined up.
 
 ```C
-void print_mtrx(mtrx_t *A);
+void print_mtrx(mtrx_t A);
 ```
 
 
@@ -106,7 +106,7 @@ void print_mtrx(mtrx_t *A);
 ### Type I: Switch
 
 ```C
-void e_switch(int a, int b, mtrx_t *A);
+void e_switch(int a, int b, mtrx_t A);
 ```
 
 Switch rows `a` and `b` of matrix `A`
@@ -114,7 +114,7 @@ Switch rows `a` and `b` of matrix `A`
 ### Type II: Scale
 
 ```C
-void e_scale(int a, double c, mtrx_t *A);
+void e_scale(int a, double c, mtrx_t A);
 ```
 
 Scale row `a` of matrix `A` by `c`
@@ -122,7 +122,25 @@ Scale row `a` of matrix `A` by `c`
 ### Type III: Add (with Scaling)
 
 ```C
-void e_add(int a, double c, int b, mtrx_t *A);
+void e_add(int a, double c, int b, mtrx_t A);
 ```
 
 Scale row `a` of matrix `A` by `c` and add it to row `b`
+
+## Matrix Operations
+
+### Scaling
+
+```C
+int scale_mtrx(int a, mtrx_t A);
+```
+Scale every element of `A` by `a`
+
+### Addition/Subtraction
+
+```C
+int add_mtrx(mtrx_t A, mtrx_t B, mtrx_t C);  // A + B = C
+int subt_mtrx(mtrx_t A, mtrx_t B, mtrx_t C); // A - B = C
+```
+Perform `A`±`B` and put it in `C`
+
